@@ -16,4 +16,8 @@ interface IUser
     public function getFirstName(): string;
 
     public function getLastName(): string;
+
+    public function setPlainPassword(string $plainPassword);
+
+    public function getPlainPassword(): string;
 }
