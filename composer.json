@@ -1,0 +1,20 @@
+{
+  "name": "newageerp/sf-base-entity",
+  "type": "symfony-bundle",
+  "autoload": {
+    "psr-4": {
+      "Newageerp\\SfBaseEntity\\": ""
+    }
+  },
+  "require": {
+    "doctrine/orm": "^2",
+    "nelmio/api-doc-bundle": "^4"
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Arturas Jegorenkovas",
+      "email": "info@newageerp.com"
+    }
+  ]
+}
