@@ -14,8 +14,19 @@ class OaBaseController extends AbstractController
 {
     protected ObjectRepository $userRepository;
 
+    protected EntityManagerInterface $em;
+
+    /**
+     * @return EntityManagerInterface
+     */
+    public function getEm(): EntityManagerInterface
+    {
+        return $this->em;
+    }
+
     public function __construct(EntityManagerInterface $em)
     {
+        $this->em = $em;
         $this->userRepository = $em->getRepository('App\\Entity\\User');
     }
 
