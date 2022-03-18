@@ -22,11 +22,11 @@ class BaseEntity implements IBaseEntity
     /**
      * @ORM\ManyToOne(targetEntity="User")
      */
-    protected ?IUser $doer = null;
+    protected ?BaseUser $doer = null;
     /**
      * @ORM\ManyToOne(targetEntity="User")
      */
-    protected ?IUser $creator = null;
+    protected ?BaseUser $creator = null;
     protected bool $skipValidation = false;
 
     /**
@@ -62,38 +62,6 @@ class BaseEntity implements IBaseEntity
     }
 
     /**
-     * @return IUser|null
-     */
-    public function getDoer(): ?IUser
-    {
-        return $this->doer;
-    }
-
-    /**
-     * @param IUser|null $doer
-     */
-    public function setDoer(?IUser $doer): void
-    {
-        $this->doer = $doer;
-    }
-
-    /**
-     * @return IUser|null
-     */
-    public function getCreator(): ?IUser
-    {
-        return $this->creator;
-    }
-
-    /**
-     * @param IUser|null $creator
-     */
-    public function setCreator(?IUser $creator): void
-    {
-        $this->creator = $creator;
-    }
-
-    /**
      * @return bool
      */
     public function isSkipValidation(): bool
@@ -107,5 +75,53 @@ class BaseEntity implements IBaseEntity
     public function setSkipValidation(bool $skipValidation): void
     {
         $this->skipValidation = $skipValidation;
+    }
+
+    /**
+     * Get the value of doer
+     *
+     * @return ?BaseUser
+     */
+    public function getDoer(): ?BaseUser
+    {
+        return $this->doer;
+    }
+
+    /**
+     * Set the value of doer
+     *
+     * @param ?BaseUser $doer
+     *
+     * @return self
+     */
+    public function setDoer(?BaseUser $doer): self
+    {
+        $this->doer = $doer;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of creator
+     *
+     * @return ?BaseUser
+     */
+    public function getCreator(): ?BaseUser
+    {
+        return $this->creator;
+    }
+
+    /**
+     * Set the value of creator
+     *
+     * @param ?BaseUser $creator
+     *
+     * @return self
+     */
+    public function setCreator(?BaseUser $creator): self
+    {
+        $this->creator = $creator;
+
+        return $this;
     }
 }

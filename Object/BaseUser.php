@@ -33,7 +33,7 @@ class BaseUser implements IUser
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private ?int $id;
+    private ?int $id = null;
 
     /**
      * @return string
@@ -136,7 +136,7 @@ class BaseUser implements IUser
     }
 
     /**
-     * @OA\Property(ttype="string", format="password")
+     * @OA\Property(type="string", format="password")
      * @return string
      */
     public function getPlainPassword(): string
