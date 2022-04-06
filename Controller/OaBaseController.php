@@ -28,8 +28,9 @@ class OaBaseController extends AbstractController
         return $this->em;
     }
 
-    public function __construct(EntityManagerInterface $em)
+    public function __construct(EntityManagerInterface $em, EventDispatcherInterface $eventDispatcher)
     {
+        $this->eventDispatcher = $eventDispatcher;
         $this->em = $em;
         $this->userRepository = $em->getRepository('App\\Entity\\User');
     }
