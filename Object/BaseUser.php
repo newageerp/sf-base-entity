@@ -17,6 +17,24 @@ class BaseUser implements IUser
      */
     protected string $lastName = '';
     /**
+     * @ORM\Column (type="string")
+     */
+    protected string $position = '';
+    /**
+     * @ORM\Column (type="string")
+     */
+    protected string $phone = '';
+    /**
+     * @ORM\Column (type="text")
+     * @OA\Property (type="string", format="text")
+     */
+    protected string $allowedIp = '';
+    /**
+     * @ORM\Column (type="text")
+     * @OA\Property (type="string", format="text")
+     */
+    protected string $mailSignature = '';
+    /**
      * @ORM\Column(type="string")
      */
     protected string $email = '';
@@ -28,6 +46,15 @@ class BaseUser implements IUser
      * @ORM\Column(type="string")
      */
     protected string $password = '';
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected string $permissionGroup = '';
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    protected bool $superUser = false;
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -143,4 +170,112 @@ class BaseUser implements IUser
     {
         return '';
     }
+
+    /**
+     * @OA\Property(type="array", @OA\Items(type="string"))
+     */
+    public function getScopes() : array
+    {
+        return [
+            $this->getPermissionGroup()
+        ];
+    }
+
+    /**
+     * @return string
+     */
+    public function getPosition(): string
+    {
+        return $this->position;
+    }
+
+    /**
+     * @param string $position
+     */
+    public function setPosition(string $position): void
+    {
+        $this->position = $position;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPhone(): string
+    {
+        return $this->phone;
+    }
+
+    /**
+     * @param string $phone
+     */
+    public function setPhone(string $phone): void
+    {
+        $this->phone = $phone;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAllowedIp(): string
+    {
+        return $this->allowedIp;
+    }
+
+    /**
+     * @param string $allowedIp
+     */
+    public function setAllowedIp(string $allowedIp): void
+    {
+        $this->allowedIp = $allowedIp;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMailSignature(): string
+    {
+        return $this->mailSignature;
+    }
+
+    /**
+     * @param string $mailSignature
+     */
+    public function setMailSignature(string $mailSignature): void
+    {
+        $this->mailSignature = $mailSignature;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPermissionGroup(): string
+    {
+        return $this->permissionGroup;
+    }
+
+    /**
+     * @param string $permissionGroup
+     */
+    public function setPermissionGroup(string $permissionGroup): void
+    {
+        $this->permissionGroup = $permissionGroup;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isSuperUser(): bool
+    {
+        return $this->superUser;
+    }
+
+    /**
+     * @param bool $superUser
+     */
+    public function setSuperUser(bool $superUser): void
+    {
+        $this->superUser = $superUser;
+    }
+
+
 }
