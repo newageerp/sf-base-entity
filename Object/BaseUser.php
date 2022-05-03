@@ -55,6 +55,28 @@ class BaseUser implements IUser
      * @ORM\Column(type="boolean")
      */
     protected bool $superUser = false;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    protected bool $disabled = false;
+
+    /**
+     * @return bool
+     */
+    public function getDisabled(): bool
+    {
+        return $this->disabled;
+    }
+
+    /**
+     * @param bool $disabled
+     */
+    public function setDisabled(bool $disabled): void
+    {
+        $this->disabled = $disabled;
+    }
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -174,7 +196,7 @@ class BaseUser implements IUser
     /**
      * @OA\Property(type="array", @OA\Items(type="string"))
      */
-    public function getScopes() : array
+    public function getScopes(): array
     {
         return [
             $this->getPermissionGroup()
