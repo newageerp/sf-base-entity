@@ -6,6 +6,7 @@ use Newageerp\SfBaseEntity\Interface\IUser;
 use OpenApi\Annotations as OA;
 use Doctrine\ORM\Mapping as ORM;
 
+
 class BaseUser implements IUser
 {
     /**
