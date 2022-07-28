@@ -299,5 +299,8 @@ class BaseUser implements IUser
         $this->superUser = $superUser;
     }
 
-
+    public function get_ViewTitle(): string
+    {
+        return $this->getFullName();
+    }
 }
