@@ -5,7 +5,7 @@ namespace Newageerp\SfBaseEntity\Object;
 use Newageerp\SfBaseEntity\Interface\IUser;
 use OpenApi\Annotations as OA;
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Serializer\Annotation\Ignore;
 
 class BaseUser implements IUser
 {
@@ -300,6 +300,9 @@ class BaseUser implements IUser
         $this->superUser = $superUser;
     }
 
+    /**
+     * @Ignore
+     */
     public function get_ViewTitle(): string
     {
         return $this->getFullName();
