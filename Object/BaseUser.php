@@ -287,7 +287,7 @@ class BaseUser implements IUser
     /**
      * @return bool
      */
-    public function isSuperUser(): bool
+    public function getSuperUser(): bool
     {
         return $this->superUser;
     }
