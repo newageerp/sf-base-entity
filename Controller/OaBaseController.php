@@ -131,4 +131,28 @@ class OaBaseController extends AbstractController
         $event = new SocketSendPoolEvent();
         $this->eventDispatcher->dispatch($event, SocketSendPoolEvent::NAME);
     }
+
+    /**
+     * Get the value of eventDispatcher
+     *
+     * @return EventDispatcherInterface
+     */
+    public function getEventDispatcher(): EventDispatcherInterface
+    {
+        return $this->eventDispatcher;
+    }
+
+    /**
+     * Set the value of eventDispatcher
+     *
+     * @param EventDispatcherInterface $eventDispatcher
+     *
+     * @return self
+     */
+    public function setEventDispatcher(EventDispatcherInterface $eventDispatcher): self
+    {
+        $this->eventDispatcher = $eventDispatcher;
+
+        return $this;
+    }
 }
