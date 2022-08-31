@@ -6,7 +6,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ObjectRepository;
 use Firebase\JWT\JWT;
 use Newageerp\SfBaseEntity\Interface\IUser;
-use Newageerp\SfSocket\Event\SocketSendPoolEvent;
+use Newageerp\SfSocket\Service\SocketService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,6 +20,8 @@ class OaBaseController extends AbstractController
 
     protected EventDispatcherInterface $eventDispatcher;
 
+    protected SocketService $socketService;
+
     /**
      * @return EntityManagerInterface
      */
@@ -28,11 +30,12 @@ class OaBaseController extends AbstractController
         return $this->em;
     }
 
-    public function __construct(EntityManagerInterface $em, EventDispatcherInterface $eventDispatcher)
+    public function __construct(EntityManagerInterface $em, EventDispatcherInterface $eventDispatcher, SocketService $socketService)
     {
         $this->eventDispatcher = $eventDispatcher;
         $this->em = $em;
         $this->userRepository = $em->getRepository('App\\Entity\\User');
+        $this->socketService = $socketService;
     }
 
     /**
@@ -128,8 +131,7 @@ class OaBaseController extends AbstractController
 
     public function sendSocketPool()
     {
-        $event = new SocketSendPoolEvent();
-        $this->eventDispatcher->dispatch($event, SocketSendPoolEvent::NAME);
+        $this->socketService->sendPool();
     }
 
     /**
